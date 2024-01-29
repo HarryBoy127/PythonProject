@@ -4,9 +4,11 @@ import sys
 def encrypt(message, k):
     encrypted_message = ""
     for x in message.lower():
-        if x.isalpha():
-            shift = ord('A') if x.isupper() else ord('a')
-            encrypted_x = chr((ord(x) - shift + k) % 26 + shift)
+        if x.isalpha(): # Check if the character is an alphabet letter
+            # If the character is lowercase, set shift to ord('a') - 97; if it's uppercase, set shift to ord('A') - 65
+            shift = ord('A') if x.isupper() else ord('a')  
+             # Encrypt the character using a Caesar cipher, transforming the letter into a secret code (number) and then back to a letter
+            encrypted_x = chr((ord(x) - shift + k) % 26 + shift) 
             encrypted_message += encrypted_x
         else:
             encrypted_message += x
